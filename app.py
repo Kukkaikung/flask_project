@@ -1,6 +1,6 @@
 from flask import Flask,render_template,request
 from flask_wtf import FlaskForm
-from wtforms import TextAreaField,SubmitField
+from wtforms import TextAreaField,SubmitField,BooleanField
 
 
 app = Flask(__name__)
@@ -8,6 +8,7 @@ app.config['SECRET_KEY'] = 'mykey'
 
 class  MyForm(FlaskForm) :
     name = TextAreaField('Enter your name')
+    isAccept = BooleanField('Allow')
     submit = SubmitField('Suubmit')
 
 
@@ -16,10 +17,12 @@ def index() :
     form = MyForm()
     data = {'name':'Baimai', 'age':19, 'salary':'100000'}
     name = False
+    isAccept = False
     if form.validate_on_submit() :
         name = form.name.data
+        isAccept = form.isAccept.data
         form.name.data = ""
-    return render_template('index.html', mydata = data, form = form, name = name)
+    return render_template('index.html', mydata = data, form = form, name = name, isAccept = isAccept)
 
 @app.route('/about')
 def about() :

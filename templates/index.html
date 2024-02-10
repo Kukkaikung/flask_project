@@ -5,11 +5,18 @@
     <form method="POST">
         {{form.hidden_tag()}}
         {{form.name.label}}
-        {{form.name()}}{{form.submit()}}
+        {{form.name()}}
+
+        <!-- Boolean Field -->
+
+        {{form.isAccept}}{{form.isAccept.label}}
+        <br>
+        {{form.submit()}}
     </form>
     <hr>
     {% if name %}
-        Your name : {{name}}
+        Your name : {{name}}<br>
+        Do you allow this contract ? {{isAccept}}
     {% else %}
         Not Found
     {% endif %}
