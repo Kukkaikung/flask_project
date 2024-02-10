@@ -1,6 +1,6 @@
 from flask import Flask,render_template,request
 from flask_wtf import FlaskForm
-from wtforms import TextAreaField,SubmitField,BooleanField,RadioField
+from wtforms import TextAreaField, SubmitField, BooleanField, RadioField, SelectField
 
 
 app = Flask(__name__)
@@ -10,6 +10,7 @@ class  MyForm(FlaskForm) :
     name = TextAreaField('Enter your name')
     isAccept = BooleanField('Allow')
     gender = RadioField('Gender', choices=[('Male','Male'),('Female','Female')])
+    skill = SelectField('Skill', choices=[('English','Englissh'),('Python','Python'),('CSS','CSS')])
     submit = SubmitField('Suubmit')
 
 
@@ -20,14 +21,16 @@ def index() :
     name = False
     isAccept = False
     gender = False
+    skill = False
     if form.validate_on_submit() :
         name = form.name.data
         isAccept = form.isAccept.data
         gender = form.gender.data
+        skill = form.skill.data
         form.name.data = ""
         form.isAccept.data = ""
         form.gender.data = ""
-    return render_template('index.html', mydata = data, form = form, name = name, isAccept = isAccept, gender = gender)
+    return render_template('index.html', mydata = data, form = form, name = name, isAccept = isAccept, gender = gender, skill = skill)
 
 @app.route('/about')
 def about() :

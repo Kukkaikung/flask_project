@@ -14,6 +14,9 @@
         <!-- Radio -->
         {{form.gender.label}}{{form.gender()}}
         <br>
+        <!-- Select -->
+        {{form.skill.label}}{{form.skill()}}
+        <br>
         {{form.submit()}}
     </form>
     <hr>
@@ -21,8 +24,10 @@
         Your name : {{name}}<br>
         Do you allow this contract ? {{isAccept}}<br>
         Your gender : {{gender}}
+        <br>
+        Your Skill : {{skill}}
     {% else %}
-        Not Found
+        
     {% endif %}
 </div>
 
