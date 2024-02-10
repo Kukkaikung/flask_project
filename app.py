@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request,session
+from flask import Flask,render_template,request,session,flash
 from flask_wtf import FlaskForm
 from wtforms import TextAreaField, SubmitField, BooleanField, RadioField, SelectField
 from wtforms.validators import DataRequired
@@ -18,6 +18,7 @@ class  MyForm(FlaskForm) :
 def index() :
     form = MyForm()
     if form.validate_on_submit() :
+        flash(' Reord data')
         session['name'] = form.name.data
         session['isAccept'] = form.isAccept.data
         session['gender'] = form.gender.data

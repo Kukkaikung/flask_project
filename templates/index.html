@@ -2,6 +2,9 @@
 {% block Main_content %}
 
 <div class="container my-2">
+    {% for message in get_flashed_messages() %}
+        <div> {{message}}</div>
+    {% endfor %}
     <form method="POST">
         {{form.hidden_tag()}}
         {{form.name.label}}
