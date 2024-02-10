@@ -14,7 +14,7 @@ def about() :
 
 @app.route('/admin')
 def profile() :
-    name = 'Pai'
+    name = 'Baimai'
     age = 30
     return render_template('admin.html', myname = name, myage = age)
 

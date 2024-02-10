@@ -1,25 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/admin">Admin</a></li>
-    </ul>
-
-    {% if myname == 'Baimai' %}
-        <h1>ต้อนรับสู่ admin</h1>
-        <h1>{{myname}}</h1>
-        <h1>Your old is {{myage}}</h1>
-        <img src="../static/minimoss.gif" alt="">
-    {% else %}
-        <h1>You not a admin</h1>
-
-    {% endif %}
-</body>
-</html>
+{% extends 'layout.html' %}
+{% block ai_sus %}
+    <div class="container">
+            <h2>Hello Baimai</h2>
+            <form action="" method="GET">
+                <div class="form-group">
+                    <label for="">User</label>
+                    <input type="text" name="fname" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Detail</label>
+                    <textarea name="description" class="form-control" cols="30" rows="10"></textarea>
+                </div>
+                <br>
+                <input type="submit" value="Commit" class="btn btn-success">
+            </form>
+    </div>
+{% endblock %}
