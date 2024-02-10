@@ -1,13 +1,13 @@
 from flask import Flask,render_template,request,session
 from flask_wtf import FlaskForm
 from wtforms import TextAreaField, SubmitField, BooleanField, RadioField, SelectField
-
+from wtforms.validators import DataRequired
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mykey'
 
 class  MyForm(FlaskForm) :
-    name = TextAreaField('Enter your name')
+    name = TextAreaField('Enter your name', validators=[DataRequired()])
     isAccept = BooleanField('Allow')
     gender = RadioField('Gender', choices=[('Male','Male'),('Female','Female')])
     skill = SelectField('Skill', choices=[('English','Englissh'),('Python','Python'),('CSS','CSS')])
