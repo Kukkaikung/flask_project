@@ -11,12 +11,16 @@
 
         {{form.isAccept}}{{form.isAccept.label}}
         <br>
+        <!-- Radio -->
+        {{form.gender.label}}{{form.gender()}}
+        <br>
         {{form.submit()}}
     </form>
     <hr>
     {% if name %}
         Your name : {{name}}<br>
-        Do you allow this contract ? {{isAccept}}
+        Do you allow this contract ? {{isAccept}}<br>
+        Your gender : {{gender}}
     {% else %}
         Not Found
     {% endif %}
