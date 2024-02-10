@@ -1,11 +1,25 @@
 from flask import Flask,render_template,request
+from flask_wtf import FlaskForm
+from wtforms import TextAreaField,SubmitField
+
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'mykey'
 
-@app.route('/')
+class  MyForm(FlaskForm) :
+    name = TextAreaField('Enter your name')
+    submit = SubmitField('Suubmit')
+
+
+@app.route('/', methods = ['GET','POST'])
 def index() :
+    form = MyForm()
     data = {'name':'Baimai', 'age':19, 'salary':'100000'}
-    return render_template('index.html', mydata = data)
+    name = False
+    if form.validate_on_submit() :
+        name = form.name.data
+        form.name.data = ""
+    return render_template('index.html', mydata = data, form = form, name = name)
 
 @app.route('/about')
 def about() :
