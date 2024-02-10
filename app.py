@@ -1,4 +1,4 @@
-from flask import Flask,render_template
+from flask import Flask,render_template,request
 
 app = Flask(__name__)
 
@@ -18,6 +18,11 @@ def profile() :
     age = 30
     return render_template('admin.html', myname = name, myage = age)
 
+@app.route('/sendData')
+def singupform() :
+    fname = request.args.get('fname')
+    description = request.args.get('description')
+    return render_template('thankyou.html', data = {'name':fname, 'description':description}) 
 
 if __name__ == "__main__" :
     app.run(debug=True)
