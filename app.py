@@ -4,16 +4,20 @@ app = Flask(__name__)
 
 @app.route('/')
 def index() :
-    return render_template('index.html')
+    data = {'name':'Baimai', 'age':19, 'salary':'100000'}
+    return render_template('index.html', mydata = data)
 
 @app.route('/about')
 def about() :
-    return render_template('about.html')
+    products = ['เสื้อผ้า', 'เตารีด', 'ผ้าห่ม']
+    return render_template('about.html', myproduct = products)
 
 @app.route('/admin')
-def admin() :
-    return render_template('admin.html')
+def profile() :
+    name = 'Pai'
+    age = 30
+    return render_template('admin.html', myname = name, myage = age)
 
 
 if __name__ == "__main__" :
-    app.run()
+    app.run(debug=True)
