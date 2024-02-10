@@ -20,12 +20,12 @@
         {{form.submit()}}
     </form>
     <hr>
-    {% if name %}
-        Your name : {{name}}<br>
-        Do you allow this contract ? {{isAccept}}<br>
-        Your gender : {{gender}}
+    {% if session['name'] %}
+        Your name : {{session['name']}}<br>
+        Do you allow this contract ? {{session['isAccept']}}<br>
+        Your gender : {{session['gender']}}
         <br>
-        Your Skill : {{skill}}
+        Your Skill : {{session['skill']}}
     {% else %}
         
     {% endif %}

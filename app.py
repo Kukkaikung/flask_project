@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request,session
 from flask_wtf import FlaskForm
 from wtforms import TextAreaField, SubmitField, BooleanField, RadioField, SelectField
 
@@ -17,20 +17,15 @@ class  MyForm(FlaskForm) :
 @app.route('/', methods = ['GET','POST'])
 def index() :
     form = MyForm()
-    data = {'name':'Baimai', 'age':19, 'salary':'100000'}
-    name = False
-    isAccept = False
-    gender = False
-    skill = False
     if form.validate_on_submit() :
-        name = form.name.data
-        isAccept = form.isAccept.data
-        gender = form.gender.data
-        skill = form.skill.data
+        session['name'] = form.name.data
+        session['isAccept'] = form.isAccept.data
+        session['gender'] = form.gender.data
+        session['skill'] = form.skill.data
         form.name.data = ""
         form.isAccept.data = ""
         form.gender.data = ""
-    return render_template('index.html', mydata = data, form = form, name = name, isAccept = isAccept, gender = gender, skill = skill)
+    return render_template('index.html', form = form)
 
 @app.route('/about')
 def about() :
