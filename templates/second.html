@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+{% block Main_content %}
+
+<div class="container my-2">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{message}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    <form method="POST">
+        {{form.hidden_tag()}}
+        {{form.name.label}}
+        {{form.name()}}
+
+        <!-- Boolean Field -->
+
+        {{form.isAccept}}{{form.isAccept.label}}
+        <br>
+        <!-- Radio -->
+        {{form.gender.label}}{{form.gender()}}
+        <br>
+        <!-- Select -->
+        {{form.skill.label}}{{form.skill()}}
+        <br>
+        {{form.submit(class="btn btn-success")}}
+    </form>
+    <hr>
+    {% if session['name'] %}
+        Your name : {{session['name']}}<br>
+        Do you allow this contract ? {{session['isAccept']}}<br>
+        Your gender : {{session['gender']}}
+        <br>
+        Your Skill : {{session['skill']}}
+    {% else %}
+        
+    {% endif %}
+</div>
+
+
+
+{% endblock %}

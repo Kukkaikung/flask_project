@@ -1,39 +1,12 @@
-{% extends 'layout.html' %}
-{% block Main_content %}
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Home</title>
+</head>
 
-<div class="container my-2">
-    {% for message in get_flashed_messages() %}
-        <div> {{message}}</div>
-    {% endfor %}
-    <form method="POST">
-        {{form.hidden_tag()}}
-        {{form.name.label}}
-        {{form.name()}}
-
-        <!-- Boolean Field -->
-
-        {{form.isAccept}}{{form.isAccept.label}}
-        <br>
-        <!-- Radio -->
-        {{form.gender.label}}{{form.gender()}}
-        <br>
-        <!-- Select -->
-        {{form.skill.label}}{{form.skill()}}
-        <br>
-        {{form.submit()}}
-    </form>
-    <hr>
-    {% if session['name'] %}
-        Your name : {{session['name']}}<br>
-        Do you allow this contract ? {{session['isAccept']}}<br>
-        Your gender : {{session['gender']}}
-        <br>
-        Your Skill : {{session['skill']}}
-    {% else %}
-        
-    {% endif %}
-</div>
-
-
-
-{% endblock %}
+<body>
+    <h1>Login Page</h1>
+</body>
+</html>

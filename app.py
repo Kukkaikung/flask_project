@@ -14,8 +14,12 @@ class  MyForm(FlaskForm) :
     submit = SubmitField('Suubmit')
 
 
-@app.route('/', methods = ['GET','POST'])
+@app.route('/')
 def index() :
+    return render_template('index.html',)
+
+@app.route('/second', methods = ['GET','POST'])
+def second() :
     form = MyForm()
     if form.validate_on_submit() :
         flash(' Reord data')
@@ -26,7 +30,7 @@ def index() :
         form.name.data = ""
         form.isAccept.data = ""
         form.gender.data = ""
-    return render_template('index.html', form = form)
+    return render_template('second.html', form = form)
 
 @app.route('/about')
 def about() :
