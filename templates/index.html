@@ -17,12 +17,19 @@
             background-size: cover;
             background-repeat: no-repeat;
         }
+
+        .btn-lg {
+            padding: 35px 200px; /* ปรับ padding เพื่อให้ปุ่มใหญ่ขึ้น */
+            font-size: 24px; /* ปรับ font-size เพื่อให้ข้อความในปุ่มใหญ่ขึ้น */
+        }
     </style>
 </head>
 <body>
-    <button type="button" class="btn btn-dark btn-lg">Click Me</button>
+    <a href="{{url_for('introduce')}}" class="btn btn-dark btn-lg">Click Me</a>
 </body>
 </html>
+
+
 
 
 
