@@ -22,6 +22,11 @@
             margin-top: 20px; /* ปรับระยะห่างระหว่างรูปภาพและข้อความ */
             margin-left: 10px;
         }
+
+        .right-content {
+            padding: 20px; /* เพิ่ม padding เพื่อให้ข้อความด้านขวามีขอบเขต */
+            margin-top: 110px; 
+        }
     </style>
 </head>
 <body>
@@ -64,10 +69,10 @@
                         </div>
                     </div>
                 </nav>
-                <main>
-                    {% block Main_content %}
-                    {% endblock %}
-                </main>
+                <div class="right-content">
+                    <h2>About This Web</h2>
+                    <p>This web is tail you about me</p>
+                </div>
             </div>
         </div>
     </div>
