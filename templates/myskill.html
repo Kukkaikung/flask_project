@@ -9,13 +9,44 @@
     <style>
         body {
             background-image: url('..//static/grey02.jpg');
-            background-size: cover; /* ปรับขนาดภาพให้ครอบคลุมพื้นที่ */
-            background-position: center; /* กำหนดตำแหน่งของภาพในพื้นที่ */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .navbar {
+            margin-bottom: 20px; /* เพิ่ม margin ด้านล่างของ Navbar */
+        }
+
+        .text-center {
+            color: white; /* ปรับสีข้อความ */
+        }
+
+        .mt-4 {
+            margin-top: 4rem; /* ปรับระยะห่างด้านบน */
+        }
+
+        .image-container {
+            position: relative;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px; /* ปรับมุมของรูปภาพ */
+            margin-bottom: 10px; /* ปรับระยะห่างของรูปภาพ */
+        }
+
+        .image-container .bottom-center {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-body-tertiary" data-bs-theme="dark">>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-body-tertiary" data-bs-theme="dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{url_for('index')}}">
                 <img src="../static/logo.gif" alt="Baimai Logo" style="height: 40px; width: auto;">
@@ -38,12 +69,33 @@
         </div>
     </nav>
     <main>
-        {% block Main_content %}
         <div class="text-center mt-4">
             <h1>Welcome to Skill page</h1>
             <p>This page will display information about my various special abilities.</p>
         </div>
-        {% endblock %}
+        <div class="container">
+            <div class="row">
+                <!-- รูปที่ 1 อยู่ด้านขวาบน -->
+                <div class="col-lg-6">
+                    <div class="image-container">
+                        <img src="../static/leaf.jpg" alt="Image 1">
+                    </div>
+                </div>
+                <!-- รูปที่ 2 อยู่ด้านซ้ายบน -->
+                <div class="col-lg-6">
+                    <div class="image-container">
+                        <img src="../static/logo.gif" alt="Image 2">
+                    </div>
+                </div>
+                <!-- รูปที่ 3 อยู่กลางล่าง -->
+                <div class="col-lg-12">
+                    <div class="image-container">
+                        <img src="../static/minimoss.gif" alt="Image 3">
+                        <div class="bottom-center">Caption or description for Image 3</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 </body>
 </html>
