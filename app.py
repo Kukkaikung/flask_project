@@ -59,6 +59,18 @@ def admin() :
 def favorite() :
     return render_template('favorite.html')
 
+@app.route('/sport')
+def sport() :
+    return render_template('sport.html')
+
+@app.route('/coding')
+def coding() :
+    return render_template('coding.html')
+
+@app.route('/music')
+def music() :
+    return render_template('music.html')
+
 
 if __name__ == "__main__" :
     app.run(debug=True)
