@@ -1,4 +1,61 @@
-{% extends 'layout.html' %}
-{% block Main_content %}
-    <h1>This page is introduce</h1>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-image: url('..//static/grey02.jpg');
+            background-size: cover; /* ปรับขนาดภาพให้ครอบคลุมพื้นที่ */
+            background-position: center; /* กำหนดตำแหน่งของภาพในพื้นที่ */
+        }
+        
+        .left-image {
+            margin-top: 100px; /* ปรับตำแหน่งรูปภาพลงมาเล็กน้อย */
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- left part-->
+            <div class="col-lg-6">
+                <!--left contant -->
+                <img src="../static/me.png" alt="Left Image" width="250" height="375" class="left-image">
+            </div>
+            <!-- right part -->
+            <div class="col-lg-6">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-body-tertiary fixed-top" data-bs-theme="dark">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="{{url_for('index')}}">
+                            <img src="../static/logo.gif" alt="Baimai Logo" style="height: 40px; width: auto;">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                            <div class="navbar-nav">
+                                <a class="nav-link active" aria-current="page" href="{{url_for('index')}}">Home</a>
+                                <a class="nav-link" href="{{url_for('second')}}">Second</a>
+                                <a class="nav-link" href="{{url_for('introduce')}}">Introduce</a>
+                                <a class="nav-link" href="{{url_for('myskill')}}">My skill</a>
+                                <a class="nav-link" href="{{url_for('hobby')}}">Hobby</a>
+                                <a class="nav-link" href="{{url_for('admin')}}">Admin</a>
+                                <a class="nav-link" href="{{url_for('favorite')}}">Admin</a>
+                                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <main>
+                    {% block Main_content %}
+                    {% endblock %}
+                </main>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
