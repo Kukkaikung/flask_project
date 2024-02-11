@@ -1,10 +1,30 @@
-from flask import Flask,render_template,request,session,flash
+from flask import Flask,render_template,request,session,flash,url_for
 from flask_wtf import FlaskForm
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import UserMixin
 from wtforms import TextAreaField, SubmitField, BooleanField, RadioField, SelectField
 from wtforms.validators import DataRequired
 
+
+
 app = Flask(__name__)
+
+
 app.config['SECRET_KEY'] = 'mykey'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:/Users/ASUS/Desktop/VS code/PsuTerm02/241-152/database.db'
+
+db = SQLAlchemy(app)
+
+
+
+
+
+
+class User(db.Model, UserMixin) :
+    id = db.Column(db.Integer, primary_key = True)
+    username = db.Column(db.String(20), nullable = False, unique = True)
+    password = db.Column(db.String(80), nullable = False)
+
 
 class  MyForm(FlaskForm) :
     name = TextAreaField('Enter your name', validators=[DataRequired()])
@@ -12,6 +32,9 @@ class  MyForm(FlaskForm) :
     gender = RadioField('Gender', choices=[('Male','Male'),('Female','Female')])
     skill = SelectField('Skill', choices=[('English','Englissh'),('Python','Python'),('CSS','CSS')])
     submit = SubmitField('Suubmit')
+
+
+
 
 
 @app.route('/')
